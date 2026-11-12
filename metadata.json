@@ -1,0 +1,6 @@
+{
+  "name": "RemDrumStudio - Tutor Workspace",
+  "description": "RemDrumStudio tutor workspace and management system for schedules, students, bookings, and payments.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,186 @@
+/* Custom styles for RemDrumStudio matching Technical Design Document Figures 8-11 */
+
+:root {
+  --rem-navy: #1f295b;
+  --rem-navy-light: #2c3870;
+  --rem-navy-dark: #161e45;
+  --rem-bg: #edf3fa;
+  --rem-card-bg: #f8fbfe;
+  --rem-blue-card: #e2eefa;
+  --rem-blue-border: #cbe0f8;
+  --rem-slot-booked: #8eafe3;
+  --rem-slot-avail: #9fe0ba;
+  --rem-pill-blue: #b9d3f7;
+  --rem-pill-blue-text: #1b3a7d;
+  --rem-text-primary: #172347;
+  --rem-text-muted: #64748b;
+  --rem-tab-active: #ebd9bf;
+}
+
+* {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input, select, textarea {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Custom badge styles matching Figure 8-11 */
+.rem-pill-blue {
+  background-color: #b9d3f7;
+  color: #1d3c7e;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+}
+
+.rem-pill-unpaid {
+  background-color: #c9dbf2;
+  color: #243f72;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+}
+
+.rem-pill-green {
+  background-color: #9fe0ba;
+  color: #0f5132;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+}
+
+.rem-btn-action {
+  background-color: #ffffff;
+  border: 1px solid #cbdbe9;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 5px 12px;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.rem-btn-action:hover {
+  background-color: #f1f5f9;
+  border-color: #b0c4de;
+}
+
+.rem-btn-dark {
+  background-color: #273468;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 8px 16px;
+  transition: all 0.15s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+
+.rem-btn-dark:hover {
+  background-color: #1c2752;
+}
+
+/* Calendar column and slot tiles */
+.calendar-col {
+  background-color: #e4effb;
+  border-radius: 6px;
+  min-height: 180px;
+}
+
+.slot-tile-booked {
+  background-color: #8eafe3;
+  color: #162955;
+  border-radius: 6px;
+  padding: 8px 6px;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.slot-tile-available {
+  background-color: #9fe0ba;
+  color: #0d4a2b;
+  border-radius: 6px;
+  padding: 8px 6px;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Student Table blue header */
+.students-table-header {
+  background-color: #9dbde7;
+  color: #172a55;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Booking filter tabs */
+.booking-tab {
+  padding: 6px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.booking-tab-active {
+  background-color: #ebd9bf;
+  color: #2d2416;
+  border: 1px solid #dfc9ab;
+}
+
+.booking-tab-inactive {
+  background-color: #ffffff;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+.booking-tab-inactive:hover {
+  background-color: #f8fafc;
+  color: #1e293b;
+}
