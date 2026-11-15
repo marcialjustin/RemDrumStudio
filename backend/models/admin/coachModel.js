@@ -1,3 +1,4 @@
+// Database queries for coaches (a user with role 'coach' plus a coach profile)
 const db = require('../../config/db');
 
 const SELECT = `SELECT u.id, u.first_name, u.last_name, u.email, u.is_active, u.password_set_at,
@@ -23,3 +24,10 @@ exports.setBand = async (userId, inBand) => {
 exports.setActive = async (userId, active) => {
   await db.execute("UPDATE users SET is_active = ? WHERE id = ? AND role = 'coach'", [active ? 1 : 0, userId]);
 };
+
+// Active coaches who are in the studio band
+exports.listBand = async () => (await db.execute(
+  `SELECT u.id, TRIM(CONCAT(u.first_name, ' ', u.last_name)) AS name
+   FROM users u JOIN coach_profiles cp ON cp.user_id = u.id
+   WHERE u.role = 'coach' AND u.is_active = 1 AND cp.in_band = 1 ORDER BY u.id`
+))[0];

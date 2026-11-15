@@ -10,6 +10,7 @@ const ROLES = [['student', 'Student'], ['parent', 'Parent']];
 const EMPTY = { firstName: '', lastName: '', email: '', password: '', confirm: '' };
 
 const ICONS = {
+  back: <path d="M15 18l-6-6 6-6" />,
   mail: <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></>,
   lock: <><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></>,
   user: <><circle cx="12" cy="8" r="4" /><path d="M4 20c1-4 4-6 8-6s7 2 8 6" /></>,
@@ -145,6 +146,7 @@ export default function AuthPage() {
       <div className={`auth__card ${mode === 'signup' ? 'is-signup' : ''}`}>
         {/* Log in form (left) */}
         <section className={`auth__pane auth__pane--login ${mode === 'login' ? 'on' : ''}`}>
+          <Link to="/" className="auth__back"><Icon name="back" className="" /> Back to home</Link>
           <Logo />
           <h1 className="auth__title">Welcome back!</h1>
           <p className="auth__sub">{booking ? 'Log in to book your lesson.' : 'Log in to see your lessons and schedule.'}</p>

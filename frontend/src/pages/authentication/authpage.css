@@ -1,5 +1,4 @@
 .auth{min-height:100vh;display:grid;place-items:center;padding:32px 16px;font-family:'Nunito',system-ui,sans-serif;color:#1b1b1f;
-  /* the page photo comes from AuthPage.jsx (BG_IMAGE); no image = just the gradients */
   background:
     var(--auth-bg, none),
     radial-gradient(circle at 15% 20%,rgba(143,156,240,.35),transparent 45%),
@@ -53,6 +52,13 @@
 .auth__btn:disabled{opacity:.65;cursor:wait}
 .auth__switch{display:none;margin-top:16px;text-align:center;font-size:.84rem;color:#5b5b66}
 .auth__switch button{background:none;border:0;color:#28346a;font:800 .84rem 'Nunito',sans-serif;cursor:pointer;text-decoration:underline}
+
+/* back to landing page */
+.auth__back{position:absolute;top:16px;left:18px;z-index:3;display:inline-flex;align-items:center;gap:4px;padding:4px 0;background:none;border:0;color:#28346a;font:800 .8rem 'Nunito',sans-serif;text-decoration:none;transition:color .2s}
+.auth__back:hover{color:#c98a00}
+.auth__back:focus-visible{outline:2px solid #fdc83d}
+.auth__back svg{width:18px;height:18px;transition:transform .2s}
+.auth__back:hover svg{transform:translateX(-3px)}
 
 /* gliding panel */
 .auth__panel{position:absolute;top:0;left:50%;z-index:2;width:50%;height:100%;overflow:hidden;color:#fff;
