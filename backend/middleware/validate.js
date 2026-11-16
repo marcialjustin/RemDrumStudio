@@ -1,3 +1,4 @@
+// Request validation
 const EMAIL = /^\S+@\S+\.\S+$/;
 const text = (v, max) => typeof v === 'string' && v.trim().length > 0 && v.trim().length <= max;
 const bad = (res, message) => res.status(400).json({ success: false, message });
@@ -52,5 +53,36 @@ exports.validateCoachUpdate = (req, res, next) => {
 exports.validateNewPassword = (req, res, next) => {
   const { password } = req.body || {};
   if (typeof password !== 'string' || password.length < 8 || password.length > 72) return bad(res, 'Password must be 8 to 72 characters.');
+  next();
+};
+
+// ----- Band bookings -----
+const validDate = d => typeof d === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(d) && !Number.isNaN(Date.parse(`${d}T12:00:00`));
+const validStart = t => typeof t === 'string' && /^\d{2}:00$/.test(t) && Number(t.slice(0, 2)) >= 9 && Number(t.slice(0, 2)) <= 16;
+
+exports.validateBandBooking = (req, res, next) => {
+  const { requestedBy, forName, date, start, note } = req.body || {};
+  if (!Number.isInteger(requestedBy)) return bad(res, 'Choose who is requesting.');
+  if (!text(forName, 100)) return bad(res, 'Enter who the lesson is for.');
+  if (!validDate(date)) return bad(res, 'Choose a valid date.');
+  if (!validStart(start)) return bad(res, 'Choose a start time between 09:00 and 16:00.');
+  if (note !== undefined && note !== null && (typeof note !== 'string' || note.length > 500)) return bad(res, 'The note is too long (500 characters at most).');
+  req.body.approve = req.body.approve === true;
+  next();
+};
+
+exports.validateAvailabilityQuery = (req, res, next) => {
+  if (!validDate(req.query.date) || !validStart(req.query.start)) return bad(res, 'Choose a valid date and start time.');
+  next();
+};
+
+exports.validateReason = (req, res, next) => {
+  const { reason } = req.body || {};
+  if (reason !== undefined && reason !== null && (typeof reason !== 'string' || reason.length > 500)) return bad(res, 'The reason is too long (500 characters at most).');
+  next();
+};
+
+exports.validateSlot = (req, res, next) => {
+  if (!validStart((req.body || {}).start)) return bad(res, 'Choose a start time between 09:00 and 16:00.');
   next();
 };

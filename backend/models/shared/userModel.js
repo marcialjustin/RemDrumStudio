@@ -1,3 +1,4 @@
+// Database queries for users
 const db = require('../../config/db');
 
 const COLUMNS = 'id, first_name, last_name, email, password_hash, role, is_active, must_change_password, password_set_at';
@@ -38,4 +39,14 @@ exports.setPassword = async (id, passwordHash) => {
 exports.countByRole = async () => {
   const [rows] = await db.execute('SELECT role, COUNT(*) AS total FROM users WHERE is_active = 1 GROUP BY role');
   return Object.fromEntries(rows.map(r => [r.role, Number(r.total)]));
+};
+
+// Active people with the given roles (for pickers like "Requested by")
+exports.listByRoles = async roles => {
+  const marks = roles.map(() => '?').join(',');
+  const [rows] = await db.execute(
+    `SELECT id, TRIM(CONCAT(first_name, ' ', last_name)) AS name, role FROM users WHERE is_active = 1 AND role IN (${marks}) ORDER BY first_name, last_name`,
+    roles
+  );
+  return rows;
 };

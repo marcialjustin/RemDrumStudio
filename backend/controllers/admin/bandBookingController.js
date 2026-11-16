@@ -1,3 +1,4 @@
+// Admin: band booking requests
 const service = require('../../services/admin/bandBookingService');
 
 const wrap = (fn, status = 200) => async (req, res, next) => {

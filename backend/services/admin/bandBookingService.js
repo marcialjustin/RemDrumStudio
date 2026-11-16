@@ -1,7 +1,3 @@
-// Business logic for band bookings.
-// A band booking needs ALL band members (active coaches with the Band switch on) to be free.
-// Today "free" means: no other approved band booking at that time. When the lessons/schedules page exists,
-// add each member's lessons inside members() below and everything else keeps working.
 const userModel = require('../../models/shared/userModel');
 const coachModel = require('../../models/admin/coachModel');
 const bandModel = require('../../models/admin/bandBookingModel');
@@ -113,6 +109,7 @@ exports.suggest = async (id, start) => {
   return { booking: shape(await bandModel.findById(id)) };
 };
 
+// for the Overview page
 exports.pendingForOverview = async () => (await exports.list('pending')).bookings;
 exports.approvedThisMonth = () => bandModel.approvedThisMonth();
 exports.FIRST_HOUR = FIRST_HOUR;

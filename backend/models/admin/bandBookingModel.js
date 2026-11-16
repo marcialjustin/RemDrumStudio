@@ -1,3 +1,4 @@
+// Database queries for band bookings
 const db = require('../../config/db');
 
 const SELECT = `SELECT b.id, b.requested_by, TRIM(CONCAT(u.first_name, ' ', u.last_name)) AS requester, u.role AS requester_role,

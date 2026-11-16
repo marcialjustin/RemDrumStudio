@@ -4,6 +4,7 @@ import LandingPage from './pages/landingpage/landingpage.jsx';
 import AuthPage from './pages/authentication/authpage.jsx';
 import AdminLayout from './pages/admin/adminlayout.jsx';
 import OverviewPage from './pages/admin/overview/overviewpage.jsx';
+import BandBookingsPage from './pages/admin/bandbookingpage/bandbooking.jsx';
 import RequireRole from './components/RequireRole.jsx';
 import ComingSoon from './components/ComingSoon.jsx';
 
@@ -22,7 +23,7 @@ export default function App() {
       <Route path="/admin" element={<RequireRole role="admin"><AdminLayout /></RequireRole>}>
         <Route index element={<Navigate to="overview" replace />} />
         <Route path="overview" element={<OverviewPage />} />
-        <Route path="band-bookings" element={<ComingSoon title="Band bookings" />} />
+        <Route path="band-bookings" element={<BandBookingsPage />} />
         <Route path="schedules" element={<ComingSoon title="Coach schedules" />} />
         <Route path="payments" element={<ComingSoon title="Payments" />} />
         <Route path="analytics" element={<ComingSoon title="Analytics" />} />
